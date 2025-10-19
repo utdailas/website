@@ -1,7 +1,7 @@
 ---
 name: Jiayi Wang
 image: images/jiayi.png
-role: Assistant Professor
+role: assistant-professor
 links:
   email: jiayi.wang2@utdallas.edu
   home-page: https://jiayiwang1017.github.io/
