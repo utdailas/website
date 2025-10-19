@@ -22,7 +22,7 @@ Our research team is composed of five faculty members specializing in Statistics
 
 {% capture content %}
 
-{% include figure.html image="images/jiayi.jpg" %}
+{% include figure.html image="images/jiayi.png" %}
 {% include figure.html image="images/photo.jpg" %}
 {% include figure.html image="images/photo.jpg" %}
 
