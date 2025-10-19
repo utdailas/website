@@ -15,7 +15,3 @@ Our research team is composed of five faculty members specializing in Statistics
 {% include list.html data="members" component="portrait" filter="role == 'Assistant Professor'" %}
 {% include list.html data="members" component="portrait" filter="role == 'PhD Stuent'" %}
 
-
-{% include section.html background="images/background.jpg" dark=true %}
-
-{% include grid.html style="square" content=content %}
