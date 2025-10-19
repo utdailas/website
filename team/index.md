@@ -1,15 +1,13 @@
 ---
 title: Team
 nav:
-  order: 3
-  tooltip: About our team
+  order: 1
+  tooltip: Our Team
 ---
 
 # {% include icon.html icon="fa-solid fa-users" %}Team
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Our research team is composed of five faculty members specializing in Statistics and Data Sciences from the Department of Mathematical Sciences at The University of Texas at Dallas, along with a group of dedicated PhD students.
 
 {% include section.html %}
 
@@ -18,15 +16,13 @@ nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
 {% include section.html background="images/background.jpg" dark=true %}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Our research team is composed of five faculty members specializing in Statistics and Data Sciences from the Department of Mathematical Sciences at The University of Texas at Dallas, along with a group of dedicated PhD students.
 
 {% include section.html %}
 
 {% capture content %}
 
-{% include figure.html image="images/photo.jpg" %}
+{% include figure.html image="images/jiayi.jpg" %}
 {% include figure.html image="images/photo.jpg" %}
 {% include figure.html image="images/photo.jpg" %}
 
