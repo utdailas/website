@@ -16,13 +16,11 @@ Our research team is composed of five faculty members specializing in Statistics
 
 {% include section.html background="images/background.jpg" dark=true %}
 
-Our research team is composed of five faculty members specializing in Statistics and Data Sciences from the Department of Mathematical Sciences at The University of Texas at Dallas, along with a group of dedicated PhD students.
-
 {% include section.html %}
 
 {% capture content %}
 
-{% include figure.html image="images/jiayi.png" %}
+{% include figure.html image="images/photo.jpg" %}
 {% include figure.html image="images/photo.jpg" %}
 {% include figure.html image="images/photo.jpg" %}
 
