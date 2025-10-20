@@ -2,17 +2,16 @@
 ---
 
 $thumb-size: 180px;
+$wrap: 800px;
 
-/* Container (like .citation-container) */
+/* Container for areas (parallel to .citation-container) */
 .area-container {
   container-type: inline-size;
 }
 
-/* Card wrapper: ALWAYS row (image left, text right) */
+/* Card wrapper (mirrors .citation) */
 .area {
   display: flex;
-  flex-direction: row;      /* lock horizontal layout */
-  align-items: stretch;
   margin: 20px 0;
   border-radius: var(--rounded);
   background: var(--background);
@@ -20,34 +19,29 @@ $thumb-size: 180px;
   box-shadow: var(--shadow);
 }
 
-/* Optional extra specificity class (used on the article) */
-.area--row {
-  flex-direction: row !important;  /* defeat any theme overrides */
-}
-
-/* LEFT: image panel */
+/* Image panel (mirrors .citation-image) */
 .area-image {
   position: relative;
   width: $thumb-size;
-  flex: 0 0 $thumb-size;
+  flex-shrink: 0;
 }
+
 .area-image img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;                 /* keeps the full figure visible */
-  background: var(--chip, #1b2331);    /* nice backdrop behind transparent PNGs */
+  object-fit: contain;
 }
 
-/* RIGHT: text panel */
+/* Text panel (mirrors .citation-text) */
 .area-text {
   position: relative;
   display: inline-flex;
-  flex: 1 1 auto;
   flex-wrap: wrap;
   gap: 10px;
   max-width: 100%;
+  height: min-content;
   padding: 20px;
   padding-left: 30px;
   text-align: left;
@@ -65,6 +59,17 @@ $thumb-size: 180px;
 .area-title {
   font-weight: var(--semi-bold);
 }
+
+.area-text > .icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: var(--light-gray);
+  opacity: 0.5;
+  font-size: 30px;
+  z-index: -1;
+}
+
 .area-description {
   color: var(--gray);
 }
@@ -75,6 +80,7 @@ $thumb-size: 180px;
   padding-top: 10px;
   margin-top: 4px;
 }
+
 .area-publications summary {
   cursor: pointer;
   color: var(--accent, #5aa7ff);
@@ -86,26 +92,25 @@ $thumb-size: 180px;
   margin: 10px 0 0;
   padding-left: 16px;
 }
-.area-publist li { margin: 6px 0; }
 
-/* Title-only link (URL hidden behind the title) */
-.area-publink {
-  color: inherit;
-  text-decoration: none;
+.area-publist li {
+  margin: 6px 0;
 }
-.area-publink:hover,
-.area-publink:focus {
-  text-decoration: underline;
+
+.area-publist a {
+  color: var(--text);
+  text-decoration-color: color-mix(in oklab, var(--accent, #5aa7ff), white 40%);
   text-underline-offset: 3px;
 }
 
-/* Tags (reuse your citation look-and-feel) */
+/* Tags (align with your citation tags/buttons look) */
 .tags {
   display: inline-flex;
   justify-content: flex-start;
   margin: 0;
   gap: 10px;
 }
+
 .tags .tag {
   font-size: 12px;
   background: var(--chip, #1b2331);
@@ -115,5 +120,13 @@ $thumb-size: 180px;
   color: var(--muted, #a8adbd);
 }
 
-/* DO NOT switch to column on small screens; keep left-right.
-   (If any global CSS tries to flip it, .area--row !important will win.) */
+/* Responsive: stack like citation does */
+@container (max-width: #{$wrap}) {
+  .area {
+    flex-direction: column;
+  }
+  .area-image {
+    width: unset;
+    height: $thumb-size;
+  }
+}
