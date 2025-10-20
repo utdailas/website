@@ -48,7 +48,7 @@ Resolution order:
             {%- assign href = p.link  | default: nil -%}
             <li>
               {%- if href -%}
-                {{ href | absolute_url | escape }}
+                <a href="{{ href | absolute_url | escape }}">
                   <span class="area-pubtitle">{{ t }}</span>
                 </a>
               {%- else -%}
@@ -59,6 +59,7 @@ Resolution order:
         </ul>
       </details>
     {%- endif -%}
+
     
 
     {%- if a_tags and a_tags.size > 0 -%}
