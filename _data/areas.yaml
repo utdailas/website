@@ -1,1 +1,13 @@
+- title: Offline Reinforcement Learning
+  description: Offline Reinforcement Learning (Offline RL) is a branch of reinforcement learning where an agent learns a policy solely from a fixed dataset of past interactions, without any further access to the environment during training. This approach relies on trajectories collected by one or more behavior policies, which may not be optimal. A key challenge in offline RL is distributional shift—when the learned policy suggests actions not well represented in the dataset, leading to unreliable predictions. Offline RL is especially important in domains where real-time data collection is costly, risky, or impractical, such as healthcare, robotics, finance, and recommendation systems, enabling safe and efficient learning from historical data.
+  image: images/OPE.png
+  selected_publications:
+    - title: A Principled Path to Fitted Distributional Evaluation
+      link: https://arxiv.org/abs/2506.20048
+    - title: A Fine-grained Analysis of Fitted Q-evaluation: Beyond Parametric Models
+      link: https://proceedings.mlr.press/v235/wang24be.html
+    - title: Projected State-action Balancing Weights for Offline Reinforcement Learning
+      link: https://projecteuclid.org/journals/annals-of-statistics/volume-51/issue-4/Projected-state-action-balancing-weights-for-offline-reinforcement-learning/10.1214/23-AOS2302.short
+  tags:
+    - research 
 
