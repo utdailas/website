@@ -45,14 +45,22 @@ Resolution order:
         <ul class="area-publist">
           {%- for p in pubs -%}
             {%- assign p_title = p.title | default: "[untitled]" -%}
-            {%- assign p_link  = p.link  | default: "#" -%}
+            {%- assign p_link  = p.link  | default: nil -%}
             <li>
-              {{ p_link | escape }}{{ p_title }}</a>
+              {%- if p_link -%}
+                {{ p_link | escape }}
+                  <span class="area-pubtitle">{{ p_title }}</span>
+                </a>
+              {%- else -%}
+                <span class="area-pubtitle">{{ p_title }}</span>
+              {%- endif -%}
             </li>
           {%- endfor -%}
         </ul>
       </details>
     {%- endif -%}
+
+    
 
     {%- if a_tags and a_tags.size > 0 -%}
       <div class="tags">
