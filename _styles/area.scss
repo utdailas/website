@@ -1,7 +1,7 @@
 ---
 ---
 
-$thumb-size: 180px;
+$thumb-size: 240px;
 $wrap: 800px;
 
 /* Container for areas (parallel to .citation-container) */
@@ -24,7 +24,9 @@ $wrap: 800px;
   position: relative;
   width: $thumb-size;
   flex-shrink: 0;
+  margin-left: 20px; // Add this line
 }
+
 
 .area-image img {
   position: absolute;
