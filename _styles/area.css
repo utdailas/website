@@ -1,12 +1,12 @@
-/* Container (parallel to .citation-container) */
+/* Container (like .citation-container) */
 .area-container {
   container-type: inline-size;
 }
 
-/* Card wrapper (always row: image left, text right) */
+/* Card wrapper: ALWAYS row (image left, text right) */
 .area {
   display: flex;
-  flex-direction: row; /* keep image on the left at all sizes */
+  flex-direction: row; /* lock horizontal layout */
   align-items: stretch;
   margin: 20px 0;
   border-radius: var(--rounded);
@@ -15,7 +15,12 @@
   box-shadow: var(--shadow);
 }
 
-/* Left image panel */
+/* Optional extra specificity class (used on the article) */
+.area--row {
+  flex-direction: row !important; /* defeat any theme overrides */
+}
+
+/* LEFT: image panel */
 .area-image {
   position: relative;
   width: 180px;
@@ -27,11 +32,11 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain; /* keep full image visible; use 'cover' if you prefer full-bleed */
-  background: var(--chip, #1b2331); /* subtle backdrop for transparent PNGs */
+  object-fit: contain; /* keeps the full figure visible */
+  background: var(--chip, #1b2331); /* nice backdrop behind transparent PNGs */
 }
 
-/* Right text panel */
+/* RIGHT: text panel */
 .area-text {
   position: relative;
   display: inline-flex;
@@ -75,7 +80,6 @@
   list-style: none;
 }
 
-/* Title-only links (URL hidden; title is clickable) */
 .area-publist {
   margin: 10px 0 0;
   padding-left: 16px;
@@ -85,18 +89,19 @@
   margin: 6px 0;
 }
 
+/* Title-only link (URL hidden behind the title) */
 .area-publink {
-  color: inherit; /* match surrounding text color */
-  text-decoration: none; /* hide underline by default */
+  color: inherit;
+  text-decoration: none;
 }
 
 .area-publink:hover,
 .area-publink:focus {
-  text-decoration: underline; /* reveal affordance on hover/focus */
+  text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-/* Tags */
+/* Tags (reuse your citation look-and-feel) */
 .tags {
   display: inline-flex;
   justify-content: flex-start;
@@ -113,12 +118,7 @@
   color: var(--muted, #a8adbd);
 }
 
-/* Optional: tweak height for very narrow containers but keep row layout */
-@container (max-width: 800px) {
-  .area-image {
-    width: 180px;
-    height: 180px; /* fixes image footprint when the text gets taller */
-  }
-}
+/* DO NOT switch to column on small screens; keep left-right.
+   (If any global CSS tries to flip it, .area--row !important will win.) */
 
 /*# sourceMappingURL=area.css.map */
