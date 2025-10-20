@@ -4,14 +4,16 @@
 $thumb-size: 180px;
 $wrap: 800px;
 
-/* Container for areas (parallel to .citation-container) */
+/* Container (parallel to .citation-container) */
 .area-container {
   container-type: inline-size;
 }
 
-/* Card wrapper (mirrors .citation) */
+/* Card wrapper (always row: image left, text right) */
 .area {
   display: flex;
+  flex-direction: row; /* keep image on the left at all sizes */
+  align-items: stretch;
   margin: 20px 0;
   border-radius: var(--rounded);
   background: var(--background);
@@ -19,11 +21,11 @@ $wrap: 800px;
   box-shadow: var(--shadow);
 }
 
-/* Image panel (mirrors .citation-image) */
+/* Left image panel */
 .area-image {
   position: relative;
   width: $thumb-size;
-  flex-shrink: 0;
+  flex: 0 0 $thumb-size;
 }
 
 .area-image img {
@@ -31,17 +33,18 @@ $wrap: 800px;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: contain; /* keep full image visible; use 'cover' if you prefer full-bleed */
+  background: var(--chip, #1b2331); /* subtle backdrop for transparent PNGs */
 }
 
-/* Text panel (mirrors .citation-text) */
+/* Right text panel */
 .area-text {
   position: relative;
   display: inline-flex;
+  flex: 1 1 auto;
   flex-wrap: wrap;
   gap: 10px;
   max-width: 100%;
-  height: min-content;
   padding: 20px;
   padding-left: 30px;
   text-align: left;
@@ -58,16 +61,6 @@ $wrap: 800px;
 
 .area-title {
   font-weight: var(--semi-bold);
-}
-
-.area-text > .icon {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  color: var(--light-gray);
-  opacity: 0.5;
-  font-size: 30px;
-  z-index: -1;
 }
 
 .area-description {
@@ -88,29 +81,30 @@ $wrap: 800px;
   list-style: none;
 }
 
+/* Title-only links (URL hidden; title is clickable) */
 .area-publist {
   margin: 10px 0 0;
   padding-left: 16px;
 }
+.area-publist li { margin: 6px 0; }
 
-.area-publist li {
-  margin: 6px 0;
+.area-publink {
+  color: inherit;               /* match surrounding text color */
+  text-decoration: none;        /* hide underline by default */
 }
-
-.area-publist a {
-  color: var(--text);
-  text-decoration-color: color-mix(in oklab, var(--accent, #5aa7ff), white 40%);
+.area-publink:hover,
+.area-publink:focus {
+  text-decoration: underline;   /* reveal affordance on hover/focus */
   text-underline-offset: 3px;
 }
 
-/* Tags (align with your citation tags/buttons look) */
+/* Tags */
 .tags {
   display: inline-flex;
   justify-content: flex-start;
   margin: 0;
   gap: 10px;
 }
-
 .tags .tag {
   font-size: 12px;
   background: var(--chip, #1b2331);
@@ -120,13 +114,10 @@ $wrap: 800px;
   color: var(--muted, #a8adbd);
 }
 
-/* Responsive: stack like citation does */
+/* Optional: tweak height for very narrow containers but keep row layout */
 @container (max-width: #{$wrap}) {
-  .area {
-    flex-direction: column;
-  }
   .area-image {
-    width: unset;
-    height: $thumb-size;
+    width: $thumb-size;
+    height: $thumb-size; /* fixes image footprint when the text gets taller */
   }
 }
