@@ -1,6 +1,6 @@
 - title: "Offline Reinforcement Learning"
   description: "Offline Reinforcement Learning (Offline RL) is a branch of reinforcement learning where an agent learns a policy solely from a fixed dataset of past interactions, without any further access to the environment during training. This approach relies on trajectories collected by one or more behavior policies, which may not be optimal. A key challenge in offline RL is distributional shift—when the learned policy suggests actions not well represented in the dataset, leading to unreliable predictions. Offline RL is especially important in domains where real-time data collection is costly, risky, or impractical, such as healthcare, robotics, finance, and recommendation systems, enabling safe and efficient learning from historical data."
-  image: images/offline.png
+  image: images/areas/offline.png
   selected_publications:
     - title: "A Principled Path to Fitted Distributional Evaluation"
       link: https://arxiv.org/abs/2506.20048
@@ -8,6 +8,10 @@
       link: https://proceedings.mlr.press/v235/wang24be.html
     - title: "Projected State-action Balancing Weights for Offline Reinforcement Learning"
       link: https://projecteuclid.org/journals/annals-of-statistics/volume-51/issue-4/Projected-state-action-balancing-weights-for-offline-reinforcement-learning/10.1214/23-AOS2302.short
+    - title: "Off-Policy Evaluation for Episodic Partially Observable Markov Decision Processes under Non-Parametric Models"
+      link: https://proceedings.neurips.cc/paper_files/paper/2022/hash/03dfa2a7755635f756b160e9f4c6b789-Abstract-Conference.html
+    - title: "Reinforcement learning for individual optimal policy from heterogeneous data"
+      link: https://projecteuclid.org/journals/annals-of-statistics/volume-53/issue-4/Reinforcement-learning-for-individual-optimal-policy-from-heterogeneous-data/10.1214/25-AOS2512.full
   tags: 
     - "Jiayi Wang"
     - "Rui Miao"
