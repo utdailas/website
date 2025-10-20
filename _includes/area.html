@@ -1,30 +1,65 @@
-{% assign area = site.data.areas | where_exp: "area", "area.title contains include.lookup" | first %}
+{%- comment -%}
+Render a single research "area" as a card, mirroring the citation card style.
 
-<div class="areas-container">
-  {% for area in areas %}
-    <div class="area-card">
-      <div class="area-icon">
-        /assets/icons/flask-icon.svg
-      </div>
-      <div class="area-content">
-        <h2 class="area-title">
-          {{ area.link }}{{ area.title }} </a>
-        </h2>
-        <p class="area-description">{{ area.description }}</p>
+Usage:
+  {% include area-card.html area=area_obj %}
+  {% include area-card.html lookup="Offline Reinforcement Learning" %}
 
-        {% if area.selected_publications %}
-          <div class="publications">
-            <h3>Selected Publications</h3>
-            <ul class="publication-list">
-              {% for pub in area.selected_publications %}
-                <li>
-                  {{ pub.link }}{{ pub.title }} </a>
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
-        {% endif %}
+Resolution order:
+  - include.area (object)
+  - include.lookup (matches title substring) in site.data.areas
+{%- endcomment -%}
+
+{%- assign area_obj = nil -%}
+{%- if include.area -%}
+  {%- assign area_obj = include.area -%}
+{%- elsif include.lookup -%}
+  {%- assign area_obj = site.data.areas
+      | where_exp: "a", "a.title contains include.lookup"
+      | first -%}
+{%- endif -%}
+{%- assign area = area_obj | default: include -%}
+
+{%- assign a_title = area.title | default: "[no title]" -%}
+{%- assign a_desc  = area.description -%}
+{%- assign a_img   = area.image -%}
+{%- assign a_tags  = area.tags -%}
+{%- assign pubs    = area.selected_publications -%}
+
+<article class="area" id="{{ a_title | slugify }}">
+  <div class="area-image">
+    <img
+      srcault: 
+  </div>
+
+  <div class="area-text">
+    <h3 class="area-title">{{ a_title }}</h3>
+
+    {%- if a_desc -%}
+      <p class="area-description">{{ a_desc }}</p>
+    {%- endif -%}
+
+    {%- if pubs and pubs.size > 0 -%}
+      <details class="area-publications">
+        <summary>Selected publications ({{ pubs.size }})</summary>
+        <ul class="area-publist">
+          {%- for p in pubs -%}
+            {%- assign p_title = p.title | default: "[untitled]" -%}
+            {%- assign p_link  = p.link  | default: "#" -%}
+            <li>
+              {{ p_link | escape }}{{ p_title }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </details>
+    {%- endif -%}
+
+    {%- if a_tags and a_tags.size > 0 -%}
+      <div class="tags">
+        {%- for t in a_tags -%}
+          <span class="tag">{{ t }}</span>
+        {%- endfor -%}
       </div>
-    </div>
-  {% endfor %}
-</div>
+    {%- endif -%}
+  </div>
+</article>
