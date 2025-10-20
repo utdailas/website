@@ -1,0 +1,128 @@
+/* Container for areas (parallel to .citation-container) */
+.area-container {
+  container-type: inline-size;
+}
+
+/* Card wrapper (mirrors .citation) */
+.area {
+  display: flex;
+  margin: 20px 0;
+  border-radius: var(--rounded);
+  background: var(--background);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+/* Image panel (mirrors .citation-image) */
+.area-image {
+  position: relative;
+  width: 180px;
+  flex-shrink: 0;
+}
+
+.area-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Text panel (mirrors .citation-text) */
+.area-text {
+  position: relative;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 100%;
+  height: min-content;
+  padding: 20px;
+  padding-left: 30px;
+  text-align: left;
+  overflow-wrap: break-word;
+  z-index: 0;
+}
+
+.area-title,
+.area-description,
+.area-publications,
+.area-publist {
+  width: 100%;
+}
+
+.area-title {
+  font-weight: var(--semi-bold);
+}
+
+.area-text > .icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: var(--light-gray);
+  opacity: 0.5;
+  font-size: 30px;
+  z-index: -1;
+}
+
+.area-description {
+  color: var(--gray);
+}
+
+/* Publications block */
+.area-publications {
+  border-top: 1px dashed var(--border, #334);
+  padding-top: 10px;
+  margin-top: 4px;
+}
+
+.area-publications summary {
+  cursor: pointer;
+  color: var(--accent, #5aa7ff);
+  font-weight: var(--semi-bold);
+  list-style: none;
+}
+
+.area-publist {
+  margin: 10px 0 0;
+  padding-left: 16px;
+}
+
+.area-publist li {
+  margin: 6px 0;
+}
+
+.area-publist a {
+  color: var(--text);
+  text-decoration-color: color-mix(in oklab, var(--accent, #5aa7ff), white 40%);
+  text-underline-offset: 3px;
+}
+
+/* Tags (align with your citation tags/buttons look) */
+.tags {
+  display: inline-flex;
+  justify-content: flex-start;
+  margin: 0;
+  gap: 10px;
+}
+
+.tags .tag {
+  font-size: 12px;
+  background: var(--chip, #1b2331);
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border, #212838);
+  color: var(--muted, #a8adbd);
+}
+
+/* Responsive: stack like citation does */
+@container (max-width: 800px) {
+  .area {
+    flex-direction: column;
+  }
+  .area-image {
+    width: unset;
+    height: 180px;
+  }
+}
+
+/*# sourceMappingURL=area.css.map */
