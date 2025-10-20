@@ -1,13 +1,10 @@
 {%- comment -%}
-Render a single research "area" as a card, mirroring the citation card style.
+Render a single research "area" as a card (image on the left),
+and list selected publications where the title itself is the link.
 
 Usage:
   {% include area-card.html area=area_obj %}
   {% include area-card.html lookup="Offline Reinforcement Learning" %}
-
-Resolution order:
-  - include.area (object)
-  - include.lookup (matches title substring) in site.data.areas
 {%- endcomment -%}
 
 {%- assign area_obj = nil -%}
@@ -18,8 +15,8 @@ Resolution order:
       | where_exp: "a", "a.title contains include.lookup"
       | first -%}
 {%- endif -%}
-{%- assign area = area_obj | default: include -%}
 
+{%- assign area = area_obj | default: include -%}
 {%- assign a_title = area.title | default: "[no title]" -%}
 {%- assign a_desc  = area.description -%}
 {%- assign a_img   = area.image -%}
@@ -27,13 +24,10 @@ Resolution order:
 {%- assign pubs    = area.selected_publications -%}
 
 <article class="area" id="{{ a_title | slugify }}">
+  <!-- Left image panel -->
   <div class="area-image">
     <img
-      srcault: 
-  </div>
-
-  <div class="area-text">
-    <h3 class="area-title">{{ a_title }}</h3>
+      src="{{ a_img | default: '/assets/images/citation-placeholder.svg' | relative_url class="area-title">{{ a_title }}</h3>
 
     {%- if a_desc -%}
       <p class="area-description">{{ a_desc }}</p>
@@ -45,9 +39,15 @@ Resolution order:
         <ul class="area-publist">
           {%- for p in pubs -%}
             {%- assign p_title = p.title | default: "[untitled]" -%}
-            {%- assign p_link  = p.link  | default: "#" -%}
+            {%- assign p_link  = p.link  | default: nil -%}
             <li>
-              {{ p_link | escape }}{{ p_title }}</a>
+              {%- if p_link -%}
+                <{ p_link | escape }}
+                  <span class="area-pubtitle">{{ p_title }}</span>
+                </a>
+              {%- else -%}
+                <span class="area-pubtitle">{{ p_title }}</span>
+              {%- endif -%}
             </li>
           {%- endfor -%}
         </ul>
