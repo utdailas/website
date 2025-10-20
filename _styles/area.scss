@@ -1,65 +1,132 @@
-.areas-container {
+---
+---
+
+$thumb-size: 180px;
+$wrap: 800px;
+
+/* Container for areas (parallel to .citation-container) */
+.area-container {
+  container-type: inline-size;
+}
+
+/* Card wrapper (mirrors .citation) */
+.area {
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  margin: 20px 0;
+  border-radius: var(--rounded);
+  background: var(--background);
+  overflow: hidden;
+  box-shadow: var(--shadow);
 }
 
-.area-card {
-  display: flex;
-  align-items: flex-start;
-  padding: 1rem;
-  border-bottom: 1px solid #e0e0e0;
+/* Image panel (mirrors .citation-image) */
+.area-image {
+  position: relative;
+  width: $thumb-size;
+  flex-shrink: 0;
 }
 
-.area-icon img {
-  width: 40px;
-  height: 40px;
-  margin-right: 1rem;
+.area-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.area-content {
-  flex: 1;
+/* Text panel (mirrors .citation-text) */
+.area-text {
+  position: relative;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 100%;
+  height: min-content;
+  padding: 20px;
+  padding-left: 30px;
+  text-align: left;
+  overflow-wrap: break-word;
+  z-index: 0;
+}
+
+.area-title,
+.area-description,
+.area-publications,
+.area-publist {
+  width: 100%;
 }
 
 .area-title {
-  margin: 0;
-  font-size: 1.25rem;
+  font-weight: var(--semi-bold);
 }
 
-.area-link {
-  color: #0077cc;
-  text-decoration: none;
-}
-
-.area-link:hover {
-  text-decoration: underline;
+.area-text > .icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: var(--light-gray);
+  opacity: 0.5;
+  font-size: 30px;
+  z-index: -1;
 }
 
 .area-description {
-  margin: 0.5rem 0 1rem;
-  color: #333;
+  color: var(--gray);
 }
 
-.publications h3 {
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-  color: #444;
+/* Publications block */
+.area-publications {
+  border-top: 1px dashed var(--border, #334);
+  padding-top: 10px;
+  margin-top: 4px;
 }
 
-.publication-list {
+.area-publications summary {
+  cursor: pointer;
+  color: var(--accent, #5aa7ff);
+  font-weight: var(--semi-bold);
   list-style: none;
-  padding-left: 0;
 }
 
-.publication-list li {
-  margin-bottom: 0.5rem;
+.area-publist {
+  margin: 10px 0 0;
+  padding-left: 16px;
 }
 
-.pub-title {
-  color: #0077cc;
-  text-decoration: none;
+.area-publist li {
+  margin: 6px 0;
 }
 
-.pub-title:hover {
-  text-decoration: underline;
+.area-publist a {
+  color: var(--text);
+  text-decoration-color: color-mix(in oklab, var(--accent, #5aa7ff), white 40%);
+  text-underline-offset: 3px;
+}
+
+/* Tags (align with your citation tags/buttons look) */
+.tags {
+  display: inline-flex;
+  justify-content: flex-start;
+  margin: 0;
+  gap: 10px;
+}
+
+.tags .tag {
+  font-size: 12px;
+  background: var(--chip, #1b2331);
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border, #212838);
+  color: var(--muted, #a8adbd);
+}
+
+/* Responsive: stack like citation does */
+@container (max-width: #{$wrap}) {
+  .area {
+    flex-direction: column;
+  }
+  .area-image {
+    width: unset;
+    height: $thumb-size;
+  }
 }
