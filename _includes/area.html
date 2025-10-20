@@ -44,16 +44,15 @@ Resolution order:
         <summary>Selected publications ({{ pubs.size }})</summary>
         <ul class="area-publist">
           {%- for p in pubs -%}
-            {%- assign p_title = p.title | default: "[untitled]" -%}
-            {%- assign p_link  = p.link  | default: nil -%}
+            {%- assign t = p.title | default: "[untitled]" -%}
+            {%- assign href = p.link | default: nil -%}
             <li>
-              {%- if p_link -%}
-                <a class="area-publink"
-                   href="{{ p_link | absolute_url | escape }}"
-                  n>
+              {%- if href -%}
+                {{ href | absolute_url | escape }}
+                  <span class="area-pubtitle">{{ t }}</span>
                 </a>
               {%- else -%}
-                <span class="area-pubtitle">{{ p_title }}</span>
+                <span class="area-pubtitle">{{ t }}</span>
               {%- endif -%}
             </li>
           {%- endfor -%}
