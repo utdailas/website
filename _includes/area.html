@@ -1,12 +1,4 @@
-{% if include.lookup %}
-  {% assign area = site.data.areas
-    | where_exp: "area",
-      "area.title contains include.lookup"
-    | first
-  %}
-{% else %}
-  {% assign area = include %}
-{% endif %}
+{% assign area = site.data.areas | where_exp: "area", "area.title contains include.lookup" | first %}
 
 <div class="areas-container">
   {% for area in areas %}
