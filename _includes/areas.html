@@ -8,7 +8,7 @@
       </div>
       <div class="area-content">
         <h2 class="area-title">
-          <a area.link }}{{ area.title }}</a>
+          {{ area.link }}{{ area.title }}</a>
         </h2>
         <p class="area-description">{{ area.description }}</p>
 
@@ -18,7 +18,7 @@
             <ul class="publication-list">
               {% for pub in area.selected_publications %}
                 <li>
-                  <a href="{{ pub.link }}"le }}</a>
+                  {{ pub.link }}{{ pub.title }}</a>
                 </li>
               {% endfor %}
             </ul>
