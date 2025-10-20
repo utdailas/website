@@ -1,0 +1,9 @@
+<div class="event">
+  <h3>{{ include.title }}</h3>
+  <p class="event-date">{{ include.date | date: "%B %d, %Y" }}</p>
+  <p class="event-location">{{ include.location }}</p>
+  <p>{{ include.description }}</p>
+  {% if include.link %}
+    <a href="{{ include.link }}">Learn More</a>
+  {% endif %}
+</div>
