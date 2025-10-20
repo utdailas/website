@@ -13,7 +13,7 @@ Our research covers a broad spectrum of topics in statistics and machine learnin
 
 ## Highlighted
 
-{% include citation.html lookup="Open collaborative writing with Manubot" style="rich" %}
+{% include areas.html lookup="Offline Reinforcement Learning" style="rich" %}
 
 {% include section.html %}
 
