@@ -1,6 +1,6 @@
 ---
 name: Rui Miao
-image: images/members/ruimiao.png
+image: images/members/ruimiao.jpg
 role: assistant-professor
 links:
   email: rui.miao@utdallas.edu
