@@ -45,7 +45,7 @@ Resolution order:
         <ul class="area-publist">
           {%- for p in pubs -%}
             {%- assign t = p.title | default: "[untitled]" -%}
-            {%- assign href = p.link | default: nil -%}
+            {%- assign href = p.link  | default: nil -%}
             <li>
               {%- if href -%}
                 {{ href | absolute_url | escape }}
@@ -59,7 +59,6 @@ Resolution order:
         </ul>
       </details>
     {%- endif -%}
-
     
 
     {%- if a_tags and a_tags.size > 0 -%}
