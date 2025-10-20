@@ -48,9 +48,7 @@ Resolution order:
             {%- assign p_link  = p.link  | default: nil -%}
             <li>
               {%- if p_link -%}
-                {{ p_link | escape }}
-                  <span class="area-pubtitle">{{ p_title }}</span>
-                </a>
+                href="{{ p_link | relative_url | uri_escape }}"
               {%- else -%}
                 <span class="area-pubtitle">{{ p_title }}</span>
               {%- endif -%}
