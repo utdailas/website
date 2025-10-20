@@ -130,3 +130,11 @@ $wrap: 800px;
     height: $thumb-size;
   }
 }
+
+
+/* area.css / area.scss */
+.area-publink { color: inherit; text-decoration: none; }
+.area-publink:hover, .area-publink:focus {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
