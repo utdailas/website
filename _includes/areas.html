@@ -1,0 +1,16 @@
+{% for area in site.data.areas %}
+  <div class="area">
+    <h2>{{ area.title }}</h2>
+    {{ area.image }}
+    <p>{{ area.description }}</p>
+    <ul>
+      {% for publication in area.selected_publications %}
+        <li>
+          {{ publication.link }}{{ publication.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+    <p><strong>Tags:</strong> {{ area.tags | join: ", " }}</p>
+    {{ area.link }}More Info</a>
+  </div>
+{% endfor %}
