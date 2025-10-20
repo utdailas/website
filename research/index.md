@@ -7,21 +7,14 @@ nav:
 
 # {% include icon.html icon="fa-solid fa-microscope" %}Research
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Our research covers a broad spectrum of topics in statistics and machine learning, including reinforcement learning, causal inference, recommender systems, transfer learning, multimodal data analysis, survival analysis, and mixture models.
 
 {% include section.html %}
 
 ## Highlighted
 
-{% include citation.html lookup="Open collaborative writing with Manubot" style="rich" %}
+{% include areas.html lookup="Offline Reinforcement Learning" style="rich" %}
 
-{% include section.html %}
 
-## All
 
-{% include search-box.html %}
 
-{% include search-info.html %}
-
-{% include list.html data="citations" component="citation" style="rich" %}
