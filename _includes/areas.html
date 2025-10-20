@@ -1,16 +1,30 @@
-{% for area in site.data.areas %}
-  <div class="area">
-    <h2>{{ area.title }}</h2>
-    {{ area.image }}
-    <p>{{ area.description }}</p>
-    <ul>
-      {% for publication in area.selected_publications %}
-        <li>
-          {{ publication.link }}{{ publication.title }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-    <p><strong>Tags:</strong> {{ area.tags | join: ", " }}</p>
-    {{ area.link }}More Info</a>
-  </div>
-{% endfor %}
+{% assign areas = site.data.areas %}
+
+<div class="areas-container">
+  {% for area in areas %}
+    <div class="area-card">
+      <div class="area-icon">
+        /assets/icons/flask-icon.svg
+      </div>
+      <div class="area-content">
+        <h2 class="area-title">
+          <a area.link }}{{ area.title }}</a>
+        </h2>
+        <p class="area-description">{{ area.description }}</p>
+
+        {% if area.selected_publications %}
+          <div class="publications">
+            <h3>Selected Publications</h3>
+            <ul class="publication-list">
+              {% for pub in area.selected_publications %}
+                <li>
+                  <a href="{{ pub.link }}"le }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
