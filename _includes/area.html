@@ -1,6 +1,6 @@
 {%- comment -%}
-Render a single research "area" as a card (image on the left),
-and list selected publications where the title itself is the link.
+Render a research "area" card with image on the LEFT and text on the RIGHT (always).
+Publication titles are the only links (URL hidden behind the title).
 
 Usage:
   {% include area-card.html area=area_obj %}
@@ -23,11 +23,15 @@ Usage:
 {%- assign a_tags  = area.tags -%}
 {%- assign pubs    = area.selected_publications -%}
 
-<article class="area" id="{{ a_title | slugify }}">
-  <!-- Left image panel -->
+<article class="area area--row" id="{{ a_title | slugify }}">
+  <!-- LEFT: image -->
   <div class="area-image">
-    <img
-      src="{{ a_img | default: '/assets/images/citation-placeholder.svg' | relative_url class="area-title">{{ a_title }}</h3>
+    {{ a_img | default: 
+  </div>
+
+  <!-- RIGHT: text -->
+  <div class="area-text">
+    <h3 class="area-title">{{ a_title }}</h3>
 
     {%- if a_desc -%}
       <p class="area-description">{{ a_desc }}</p>
@@ -42,7 +46,7 @@ Usage:
             {%- assign p_link  = p.link  | default: nil -%}
             <li>
               {%- if p_link -%}
-                <{ p_link | escape }}
+                {{ p_link | escape }}
                   <span class="area-pubtitle">{{ p_title }}</span>
                 </a>
               {%- else -%}
