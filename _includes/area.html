@@ -1,10 +1,13 @@
 {%- comment -%}
-Render a research "area" card with image on the LEFT and text on the RIGHT (always).
-Publication titles are the only links (URL hidden behind the title).
+Render a single research "area" as a card, mirroring the citation card style.
 
 Usage:
   {% include area-card.html area=area_obj %}
   {% include area-card.html lookup="Offline Reinforcement Learning" %}
+
+Resolution order:
+  - include.area (object)
+  - include.lookup (matches title substring) in site.data.areas
 {%- endcomment -%}
 
 {%- assign area_obj = nil -%}
@@ -15,21 +18,20 @@ Usage:
       | where_exp: "a", "a.title contains include.lookup"
       | first -%}
 {%- endif -%}
-
 {%- assign area = area_obj | default: include -%}
+
 {%- assign a_title = area.title | default: "[no title]" -%}
 {%- assign a_desc  = area.description -%}
 {%- assign a_img   = area.image -%}
 {%- assign a_tags  = area.tags -%}
 {%- assign pubs    = area.selected_publications -%}
 
-<article class="area area--row" id="{{ a_title | slugify }}">
-  <!-- LEFT: image -->
+<article class="area" id="{{ a_title | slugify }}">
   <div class="area-image">
-    {{ a_img | default: 
+    <img
+      srcault: 
   </div>
 
-  <!-- RIGHT: text -->
   <div class="area-text">
     <h3 class="area-title">{{ a_title }}</h3>
 
@@ -43,15 +45,9 @@ Usage:
         <ul class="area-publist">
           {%- for p in pubs -%}
             {%- assign p_title = p.title | default: "[untitled]" -%}
-            {%- assign p_link  = p.link  | default: nil -%}
+            {%- assign p_link  = p.link  | default: "#" -%}
             <li>
-              {%- if p_link -%}
-                {{ p_link | escape }}
-                  <span class="area-pubtitle">{{ p_title }}</span>
-                </a>
-              {%- else -%}
-                <span class="area-pubtitle">{{ p_title }}</span>
-              {%- endif -%}
+              {{ p_link | escape }}{{ p_title }}</a>
             </li>
           {%- endfor -%}
         </ul>
