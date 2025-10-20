@@ -28,8 +28,7 @@ Resolution order:
 
 <article class="area" id="{{ a_title | slugify }}">
   <div class="area-image">
-    <img
-      srcault: 
+    <img src="{{ area.image | relative_url }}" alt="{{ area.title | default: 'Area image' }}">
   </div>
 
   <div class="area-text">
