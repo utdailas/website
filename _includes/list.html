@@ -22,7 +22,7 @@
   {% for d in data %}
     {% assign style = d.style | default: include.style %}
 
-    {%
+    {%-
       include {{ include.component | append: ".html" }}
       affiliation=d.affiliation
       author=d.author
@@ -39,6 +39,7 @@
       image=d.image
       last_modified_at=d.last_modified_at
       link=d.link
+      location=d.location
       lookup=d.lookup
       name=d.name
       publisher=d.publisher
@@ -54,6 +55,6 @@
       type=d.type
       url=d.url
       width=d.width
-    %}
+    -%}
   {% endfor %}
 {% endfor %}

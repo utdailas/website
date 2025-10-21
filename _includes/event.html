@@ -1,16 +1,18 @@
 <div class="event">
   {% if include.image %}
     <div class="event-image-container">
-      <img src="{{ include.image }}" alt="{{ include.title }}" />
+      <img src="{{ include.image | relative_url | uri_escape }}" alt="{{ include.title | xml_escape }}" />
     </div>
   {% endif %}
   <div class="event-content">
     <h3>{{ include.title }}</h3>
     <p class="event-date">{{ include.date | date: "%B %d, %Y" }}</p>
-    <p class="event-location">{{ include.location }}</p>
+    {% if include.location %}
+      <p class="event-location">{{ include.location }}</p>
+    {% endif %}
     <p>{{ include.description }}</p>
     {% if include.link %}
-      <a href="{{ include.link }}">Learn More</a>
+      <a href="{{ include.link | relative_url | uri_escape }}">Learn More</a>
     {% endif %}
   </div>
 </div>
