@@ -1,18 +1,30 @@
-<div class="event">
+<article class="area event" id="{{ include.title | slugify }}">
   {% if include.image %}
-    <div class="event-image-container">
-      <img src="{{ include.image | relative_url | uri_escape }}" alt="{{ include.title | xml_escape }}" />
+    <div class="area-image">
+      <img src="{{ include.image | relative_url | uri_escape }}" alt="{{ include.title | xml_escape }}">
     </div>
   {% endif %}
-  <div class="event-content">
-    <h3>{{ include.title }}</h3>
-    <p class="event-date">{{ include.date | date: "%B %d, %Y" }}</p>
-    {% if include.location %}
-      <p class="event-location">{{ include.location }}</p>
+
+  <div class="area-text">
+    <h3 class="area-title">{{ include.title }}</h3>
+
+    {% if include.date or include.location %}
+      <p class="event-meta">
+        {% if include.date %}
+          <span class="event-date">{{ include.date | date: "%B %d, %Y" }}</span>
+        {% endif %}
+        {% if include.location %}
+          <span class="event-location">{{ include.location }}</span>
+        {% endif %}
+      </p>
     {% endif %}
-    <p>{{ include.description }}</p>
+
+    {% if include.description %}
+      <p class="area-description">{{ include.description }}</p>
+    {% endif %}
+
     {% if include.link %}
-      <a href="{{ include.link | relative_url | uri_escape }}">Learn More</a>
+      <a class="area-publink" href="{{ include.link | relative_url | uri_escape }}">Learn More</a>
     {% endif %}
   </div>
-</div>
+</article>
