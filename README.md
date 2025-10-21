@@ -5,6 +5,6 @@
 
   # utdailas's Website
 
-  Visit **[utdailas.github.io/website](https://utdailas.github.io/website)** 🚀
+  Visit **[utdailas.github.io](https://utdailas.github.io)** 🚀
 
   _Built with [Lab Website Template](https://greene-lab.gitbook.io/lab-website-template-docs)_
