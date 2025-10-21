@@ -1,1 +1,1 @@
-Sitemap: https://utdailas.github.io/website/sitemap.xml
+Sitemap: https://utdailas.github.io/sitemap.xml
