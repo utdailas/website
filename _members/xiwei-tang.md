@@ -1,8 +1,8 @@
+@@ -1,6 +1,6 @@
 ---
 name: Xiwei Tang
-image: 
-role: 
+image: images/members/XiweiTang.jpg
+role: associate-professor
 links:
-  home-page: https://janesmith.com
----
-
+  email: xiwei.tang@utdallas.edu
+  home-page: https://sites.google.com/view/xiweitang-homepage
