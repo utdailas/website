@@ -1,6 +1,6 @@
 ---
 name: Xiwei Tang
-image: images/members/XiweiTang.jpg
+image: images/members/XiweiTang.JPG
 role: associate-professor
 links:
   email: xiwei.tang@utdallas.edu
