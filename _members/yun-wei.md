@@ -1,6 +1,6 @@
 ---
 name: Yun Wei
-image: images/members/XiweiTang.JPG
+image: images/members/yun_profile.jpg
 role: assistant-professor
 links:
   email: yun.wei@utdallas.edu
